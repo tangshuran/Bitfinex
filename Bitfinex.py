@@ -50,6 +50,10 @@ class Bitfinex:
 		post_data = {'symbol' : symbol, 'amount' : str(amount), 'price' : str(price), 'exchange' : exchange, 'side' : 'sell', 'type' : type_}
 		url_path = '/order/new'
 		return self.construct_and_send(post_data, url_path)
+	def transfer(self, amount, currency, walletfrom, walletto):
+		post_data={"amount" : str(amount), "currency" : currency, "walletfrom" : walletfrom, "walletto" : walletto}
+		url_path="/transfer"
+		return self.construct_and_send(post_data, url_path)
 
 	def cancelOrder(self, order_id):
 		post_data = {'order_id' : order_id}
